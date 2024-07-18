@@ -7,7 +7,8 @@ using UnityEngine.UI;
 namespace R3Samples.FromUniRx
 {
     /// <summary>
-    /// UnityEngine.UI.ButtonとReactivePropertyを組み合わせて制御するAsyncReactiveCommandの再現
+    /// UnityEngine.UI.ButtonとReactivePropertyを組み合わせて制御する
+    /// AsyncReactiveCommandの再現
     /// スレッドセーフ性などは考慮していない上、Dispose時の挙動も若干不安
     /// あくまで参考程度にしてもらって、そのままプロダクトで使うのは避けたほうが良い
     /// （使用にした場合に発生したトラブルの責任は負いません）
@@ -25,7 +26,8 @@ namespace R3Samples.FromUniRx
         {
             _asyncAction = action;
             _gate = gate;
-            _gate.SubscribeToInteractable(button).RegisterTo(_cts.Token);
+            _gate.SubscribeToInteractable(button)
+                .RegisterTo(_cts.Token);
         }
 
         public async UniTask ExecuteAsync(CancellationToken ct)
@@ -37,7 +39,8 @@ namespace R3Samples.FromUniRx
 
             try
             {
-                var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(ct, _cts.Token);
+                var linkedCts = CancellationTokenSource
+                    .CreateLinkedTokenSource(ct, _cts.Token);
                 await _asyncAction(linkedCts.Token);
             }
             finally

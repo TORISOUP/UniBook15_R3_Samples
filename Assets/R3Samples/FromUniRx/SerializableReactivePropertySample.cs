@@ -7,8 +7,10 @@ namespace R3Samples.FromUniRx
     {
         // SerializableReactiveProperty を使うとUnityのInspectorで値を設定できる
         [SerializeField]
-        private SerializableReactiveProperty<int> _serializableValue = new(0);
+        private SerializableReactiveProperty<int> _serializableValue 
+            = new(0);
         
-        public ReadOnlyReactiveProperty<int> SerializableValue => _serializableValue;
+        public ReadOnlyReactiveProperty<int> SerializableValue =>
+            _serializableValue;
     }
 }

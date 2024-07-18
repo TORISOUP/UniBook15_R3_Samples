@@ -14,10 +14,12 @@ namespace R3Samples.FromUniRx
             R3.Observable<int> r3Observable = r3Subject;
 
             // R3 の Observable を System の IObservable に変換
-            System.IObservable<int> observable = r3Observable.AsSystemObservable();
+            System.IObservable<int> observable 
+                = r3Observable.AsSystemObservable();
 
             // System の IObservable を R3 の Observable に変換
-            R3.Observable<int> r3Observable2 = observable.ToObservable();
+            R3.Observable<int> r3Observable2 
+                = observable.ToObservable();
         }
     }
 }

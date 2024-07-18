@@ -26,7 +26,8 @@ namespace R3Samples.R3Unity
             this.OnCollisionEnterAsObservable()
                 .Subscribe(collision =>
                 {
-                    Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
+                    Debug.Log("OnCollisionEnter: " 
+                              + collision.gameObject.name);
                 });
 
             // OnDestroy() を Observable として扱う

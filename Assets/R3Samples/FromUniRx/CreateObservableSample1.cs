@@ -13,7 +13,10 @@ namespace R3Samples.FromUniRx
             var observable1 = SampleAsync(default).ToObservable();
 
             // Observableの購読中断時に非同期処理もキャンセルしたい場合
-            var observable2 = Observable.FromAsync(async ct => await SampleAsync(ct));
+            var observable2 = Observable.FromAsync(async ct =>
+            {
+                return await SampleAsync(ct);
+            });
         }
         
 

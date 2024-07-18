@@ -20,15 +20,30 @@ namespace R3Samples.FromUniRx
             // それに連動してすべてのボタンが一時無効化される
             // 非同期処理が完了すると解除
             _button1.BindToOnClick(_gate,
-                async ct => await UniTask.Delay(TimeSpan.FromSeconds(3), cancellationToken: ct),
+                async ct =>
+                {
+                    await UniTask.Delay(
+                        TimeSpan.FromSeconds(3),
+                        cancellationToken: ct);
+                },
                 destroyCancellationToken);
-            
+
             _button2.BindToOnClick(_gate,
-                async ct => await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: ct),
+                async ct =>
+                {
+                    await UniTask.Delay(
+                        TimeSpan.FromSeconds(1),
+                        cancellationToken: ct);
+                },
                 destroyCancellationToken);
-            
+
             _button3.BindToOnClick(_gate,
-                async ct => await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: ct),
+                async ct =>
+                {
+                    await UniTask.Delay(
+                        TimeSpan.FromSeconds(5),
+                        cancellationToken: ct);
+                },
                 destroyCancellationToken);
         }
     }

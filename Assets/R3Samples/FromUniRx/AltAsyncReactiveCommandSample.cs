@@ -20,7 +20,9 @@ namespace R3Samples.FromUniRx
                     try
                     {
                         _button.interactable = false;
-                        await UniTask.Delay(TimeSpan.FromSeconds(3), cancellationToken: ct);
+                        await UniTask.Delay(
+                            TimeSpan.FromSeconds(3),
+                            cancellationToken: ct);
                     }
                     finally
                     {

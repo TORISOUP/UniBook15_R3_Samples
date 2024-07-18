@@ -19,21 +19,36 @@ namespace R3Samples.FromUniRx
                 // 各種コレクションに起きた変化をイベントとして購読できる
                 // UniRxとの違いはCancellationTokenの指定ができる
                 readOnly.ObserveAdd(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Add: {x}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Add: {x}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveRemove(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Remove: {x}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Remove: {x}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveMove(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Move: {x}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Move: {x}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveReplace(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Replace: {x}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Replace: {x}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveReset(destroyCancellationToken)
-                    .Subscribe(_ => Debug.Log("Reset"))
+                    .Subscribe(_ =>
+                    {
+                        Debug.Log("Reset");
+                    })
                     .AddTo(this);
-                
+
                 observableList.Add(1);
                 observableList.Add(2);
                 observableList.Remove(1);
@@ -43,27 +58,41 @@ namespace R3Samples.FromUniRx
 
             {
                 // ほぼUniRx.ReactiveDictionaryと同じ
-                var observableDictionary = new ObservableDictionary<int, string>();
+                var observableDictionary 
+                    = new ObservableDictionary<int, string>();
 
                 // IReadOnlyReactiveDictionaryはないが
                 // IReadOnlyObservableDictionaryを使うことでReadOnlyにできる
-                IReadOnlyObservableDictionary<int, string> readOnly = observableDictionary;
-                
+                IReadOnlyObservableDictionary<int, string> readOnly 
+                    = observableDictionary;
+
                 // 各種コレクションに起きた変化をイベントとして購読できる
                 // ObservableDictionaryを扱う場合は「ObserverDictionary***」を使うと便利
                 readOnly.ObserveDictionaryAdd(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Add: {x.Key} - {x.Value}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Add: {x.Key} - {x.Value}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveDictionaryRemove(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Remove: {x.Key} - {x.Value}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Remove: {x.Key} - {x.Value}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveDictionaryReplace(destroyCancellationToken)
-                    .Subscribe(x => Debug.Log($"Replace: {x.Key} - {x.NewValue}"))
+                    .Subscribe(x =>
+                    {
+                        Debug.Log($"Replace: {x.Key} - {x.NewValue}");
+                    })
                     .AddTo(this);
                 readOnly.ObserveReset(destroyCancellationToken)
-                    .Subscribe(_ => Debug.Log("Reset"))
+                    .Subscribe(_ =>
+                    {
+                        Debug.Log("Reset");
+                    })
                     .AddTo(this);
-                
+
                 observableDictionary.Add(1, "one");
                 observableDictionary.Add(2, "two");
                 observableDictionary.Remove(1);

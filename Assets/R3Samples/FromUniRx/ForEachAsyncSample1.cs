@@ -28,7 +28,9 @@ namespace R3Samples.FromUniRx
 
                 // 10回繰り返したらObservableが完了するため、ここに到達する
                 // 3秒ほど待ってから処理を再開させる
-                await UniTask.Delay(TimeSpan.FromSeconds(3), cancellationToken: ct);
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(3),
+                    cancellationToken: ct);
             }
         }
     }
